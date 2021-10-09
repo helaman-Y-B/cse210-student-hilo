@@ -11,11 +11,15 @@ class Dealer_card:
 
         Args: 
             self (Dealer_card): an instance of Dealer_card."""
+
         # self.cards is the list of the 13 possible cards that the dealer can throw.
+
         self.cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         self.card = 0
+
         # declared player response to get higher or lower inputs
         self.score = 0
+
 
     def can_continue(self):
         """The can_continue method determines whether or not the Dealer can throw again. 
@@ -64,10 +68,19 @@ class Dealer_card:
 
         return score
 
+
     def throw_card(self):
-        """The throw_card method randomly choose a value from a list called 'cards'. """
+        """The throw_card method randomly choose a value from a list called 'cards'. 
+
+        Args:
+            self (Dealer_card): an instance of Dealer_card. 
+        Return:
+            card: return the randomly choosen card and use as playing cards"""
+        
         # Randomly choose a card from the cards list
         card = random.choice(self.cards)
+
         self.card = card
 
         return card
+
