@@ -38,5 +38,5 @@ root                    (project root folder)
 ## Authors
 ---
 Nicolas Paredes: par21035@byui.edu
-Helama Barbour: Helamashi@gamil.com
+Helama Barbour: Helamashi@gmail.com
 James Charlie Salva: jamessalvajames@hotmail.com
