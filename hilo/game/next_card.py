@@ -13,9 +13,9 @@ class Dealer_card:
         Args: 
             self (Dealer_card): an instance of Dealer_card."""
         # self.cards is the list of the 13 possible cards that the dealer can throw.
-        self.cards = ["2", "3", "4", "5", "6",
-                      "7", "8", "9", "10", "J", "Q", "K", "A"]
-        self.card = ""
+        self.cards = [1, 2, 3, 4, 5, 6,
+                      7, 8, 9, 10, 11, 12, 13]
+        self.card = 0
 
     def can_continue(self):
         """The can_continue method determines whether or not the Dealer can throw again. 
@@ -29,17 +29,20 @@ class Dealer_card:
         else:
             keep_playing = False
 
+        return keep_playing
+
     def get_points(self):
         """The get_points method calculates and returns the total points for the current game. 
         It goes from 1 point up until 13 points"""
         # if the card is number '2', the get_points will add 1 point
         # if the card is the letter 'A', the get_points will add 13 points
-        score = 0
 
-        return score
+        return 0
 
     def throw_card(self):
         """The throw_card method randomly choose a value from a list called 'cards'. """
         # Randomly choose a card from the cards list
         card = random.choice(self.cards)
         self.card = card
+        
+        return card

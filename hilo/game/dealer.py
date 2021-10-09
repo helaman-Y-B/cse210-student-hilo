@@ -11,9 +11,13 @@ class Dealer:
         # keep_playing is = to True, so that the game can start
         self.keep_playing = True
         # The user score
-        self.score = 0
+        self.score = 300
         # calls the Dealer_card class.
         self.next_card = Dealer_card()
+        # declared player response to get higher or lower inputs
+        self.player_response = ""
+        # declare old card variable to store the current card to compare it on the later part
+        self.old_card = 0
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -25,8 +29,8 @@ class Dealer:
             """Functions to start the game"""
             # Calls the functions, making the game start
             self.get_input()
-            self.updates()
             self.output()
+            self.updates()
 
     def get_input(self):
         """Gets the inputs at the beginning of each round of play. In this case,
@@ -37,6 +41,8 @@ class Dealer:
         """
         # Here is where the card will be stored, to be able to use it at the end of this file.
         self.next_card.throw_card()
+        self.old_card = self.next_card.throw_card()
+        
 
     def updates(self):
         """Updates the important game information for each round of play. In 
@@ -58,9 +64,12 @@ class Dealer:
         """
         # Print the current card and the current score.
         print(f"\nThe Dealer Throw: {self.next_card.card}")
-        print(f"Your current score is: {self.score}")
 
         if self.next_card.can_continue():
             # The user will choose, if the card will be higher or lower then the last card.
             choice = input("Will it be Heigher or Lower? [H/L] ").lower
-            self.keep_playing = (choice == "h" or "l")
+            self.player_response = (choice == "h" or "l")
+
+        print(f"Next Card: {}")
+
+        print(f"Your current score is: {self.score}")
