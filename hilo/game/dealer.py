@@ -23,11 +23,11 @@ class Dealer:
         Args:
             self (Dealer): an instance of Dealer.
         """
+        self.init_card = self.next_card.throw_card()
         while self.keep_playing:
             """Functions to start the game"""
             # Calls the functions, making the game start
-            self.get_input()
-            self.output()
+            self.output(self.init_card)
             self.updates()
 
     def get_input(self):
@@ -53,7 +53,7 @@ class Dealer:
         points = self.next_card.get_points()
         self.score += points
 
-    def output(self):
+    def output(self, init_card):
         """Outputs the important game information for each round of play. In 
         this case, that means the card that were showed and the score.
 
@@ -61,13 +61,19 @@ class Dealer:
             self (Dealer): an instance of Dealer.
         """
         # Print the current card and the current score.
-        print(f"\nThe Dealer Throw: {self.next_card.card}")
+        #current_card = self.next_card.throw_card()
+        next_card = self.next_card.throw_card()
+        
+        #print(current_card)
+        # ~ print(next_card)
+        print(f"\nThe Dealer Throw: {init_card}")
 
         if self.next_card.can_continue():
             # The user will choose, if the card will be higher or lower then the last card.
             choice = input("Will it be Heigher or Lower? [H/L] ").lower
             self.next_card.player_response = choice
 
-        print(f"Next Card:")
+        print(f"Next Card: {next_card}")
 
         print(f"Your current score is: {self.score}")
+        self.init_card = next_card
