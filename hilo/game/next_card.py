@@ -16,6 +16,8 @@ class Dealer_card:
         self.cards = [1, 2, 3, 4, 5, 6,
                       7, 8, 9, 10, 11, 12, 13]
         self.card = 0
+        # declared player response to get higher or lower inputs
+        self.player_response = ""
 
     def can_continue(self):
         """The can_continue method determines whether or not the Dealer can throw again. 
@@ -36,6 +38,14 @@ class Dealer_card:
         It goes from 1 point up until 13 points"""
         # if the card is number '2', the get_points will add 1 point
         # if the card is the letter 'A', the get_points will add 13 points
+
+        
+        # if (self.player_response == "l" and next_card < current_card) or (self.player_response == "h" and next_card > current_card):
+        #     score = 100
+        # elif (self.player_response == "l" and next_card > current_card) or (self.player_response == "h" and next_card < current_card):
+        #     score = -75
+        # else: 
+        #     print("invalid response")
 
         return 0
 
