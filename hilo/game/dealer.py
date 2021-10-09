@@ -14,8 +14,6 @@ class Dealer:
         self.score = 300
         # calls the Dealer_card class.
         self.next_card = Dealer_card()
-        # declared player response to get higher or lower inputs
-        self.player_response = ""
         # declare old card variable to store the current card to compare it on the later part
         self.old_card = 0
 
@@ -68,7 +66,7 @@ class Dealer:
         if self.next_card.can_continue():
             # The user will choose, if the card will be higher or lower then the last card.
             choice = input("Will it be Heigher or Lower? [H/L] ").lower
-            self.player_response = (choice == "h" or "l")
+            self.next_card.player_response = choice
 
         print(f"Next Card:")
 
