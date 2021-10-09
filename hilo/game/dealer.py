@@ -20,6 +20,7 @@ class Dealer:
             self (Dealer): an instance of Dealer.
         """
         self.init_card = self.next_card.throw_card()
+
         self.current_card = ""
         self.final_score = 0
 
@@ -27,6 +28,17 @@ class Dealer:
             """Functions to start the game"""
             # Calls the output functions, making the game start
             self.output(self.init_card) 
+
+        while self.keep_playing:
+            """Functions to start the game"""
+            # Calls the functions, making the game start
+            self.output(self.init_card)
+            self.updates()
+
+    def get_input(self):
+        """Gets the inputs at the beginning of each round of play. In this case,
+        that means the Dealer will show a new card.
+
 
             #Evaluating if the score is zero or not
             if self.score == 0:
@@ -64,6 +76,7 @@ class Dealer:
             self (Dealer): an instance of Dealer.
             init_card: the inital card 
         """
+
         #storing card from the Dealer_card class to store as a next_card
         next_card = self.next_card.throw_card()
         #Storing initial card as the current card for the comparison purposes
@@ -79,9 +92,26 @@ class Dealer:
         print(f"Next Card was: {next_card}")
         #Update of scores and storing the return of the update function.
         self.score = self.updates(next_card)
+        
+        # Print the current card and the current score.
+        #current_card = self.next_card.throw_card()
+        next_card = self.next_card.throw_card()
+        
+        #print(current_card)
+        # ~ print(next_card)
+        print(f"\nThe Dealer Throw: {init_card}")
+
+        if self.next_card.can_continue():
+            # The user will choose, if the card will be higher or lower then the last card.
+            choice = input("Will it be Heigher or Lower? [H/L] ").lower
+            self.next_card.player_response = choice
+
+        print(f"Next Card: {next_card}")
+
 
         #printing of the current score
         print(f"Your current score is: {self.score}")
 
         #Getting the value of next_card to be used as a parameter
+        self.init_card = next_card
         self.init_card = next_card
