@@ -70,6 +70,6 @@ class Dealer:
             choice = input("Will it be Heigher or Lower? [H/L] ").lower
             self.player_response = (choice == "h" or "l")
 
-        print(f"Next Card: {}")
+        print(f"Next Card:")
 
         print(f"Your current score is: {self.score}")
