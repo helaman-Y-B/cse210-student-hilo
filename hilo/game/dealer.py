@@ -4,7 +4,6 @@ from game.next_card import Dealer_card
 class Dealer:
     def __init__(self):
         """The class constructor.
-
         Args:
             self (Dealer): an instance of Dealer.
         """
@@ -19,21 +18,20 @@ class Dealer:
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
-
         Args:
             self (Dealer): an instance of Dealer.
         """
+        self.init_card = self.next_card.throw_card()
+        self.current_card = ""
         while self.keep_playing:
             """Functions to start the game"""
             # Calls the functions, making the game start
-            self.get_input()
-            self.output()
-            self.updates()
+            self.output(self.init_card)
+            self.updates(self.init_card)
 
     def get_input(self):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means the Dealer will show a new card.
-
         Args:
             self (Dealer): an instance of Dealer.
         """
@@ -42,32 +40,36 @@ class Dealer:
         self.old_card = self.next_card.throw_card()
         
 
-    def updates(self):
+    def updates(self, next_card):
         """Updates the important game information for each round of play. In 
         this case, that means updating the score.
-
         Args:
             self (Dealer): an instance of Dealer.
         """
         # calls the get_points function, and store  the points into a value called score
-        points = self.next_card.get_points()
+        print(f"thisis the current card inside updates{self.current_card}")
+        points = self.next_card.get_points(next_card, self.current_card)
         self.score += points
 
-    def output(self):
+    def output(self, init_card):
         """Outputs the important game information for each round of play. In 
         this case, that means the card that were showed and the score.
-
         Args:
             self (Dealer): an instance of Dealer.
         """
         # Print the current card and the current score.
-        print(f"\nThe Dealer Throw: {self.next_card.card}")
+        #current_card = self.next_card.throw_card()
+        next_card = self.next_card.throw_card()
+
+        self.current_card = init_card
+        print(f"\nThe Dealer Throw: {init_card}")
 
         if self.next_card.can_continue():
             # The user will choose, if the card will be higher or lower then the last card.
-            choice = input("Will it be Heigher or Lower? [H/L] ").lower
+            choice = input("Will it be Heigher or Lower? [H/L] ").lower()
             self.next_card.player_response = choice
 
-        print(f"Next Card:")
+        print(f"Next Card: {next_card}")
 
         print(f"Your current score is: {self.score}")
+        self.init_card = next_card
