@@ -23,9 +23,11 @@ The project files and folders are organized as follows:
 ```
 root                    (project root folder)
 +-- hilo                (source code for game)
-  +-- game              (specific game classes)
-  +-- __init__.py       (python package file)
   +-- __main__.py       (entry point for program)
+  +-- game              (specific game classes)
+    +-- __init__.py     (python package file)
+    +--dealer.py        (execution of the game)
+    +--next_card.py     (randomly choosing cards and evaluation)
 +-- README.md           (general info)
 ```
 
@@ -35,4 +37,6 @@ root                    (project root folder)
 
 ## Authors
 ---
-* TODO: Add your names and emails here
+Nicolas Paredes:
+Helama Barbour:
+James Charlie Salva: jamessalvajames@hotmail.com
