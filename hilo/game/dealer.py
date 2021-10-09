@@ -9,8 +9,6 @@ class Dealer:
         """
         # keep_playing is = to True, so that the game can start
         self.keep_playing = True
-        # The user score
-        self.score = 300
         # calls the Dealer_card class.
         self.next_card = Dealer_card()
 
@@ -32,29 +30,11 @@ class Dealer:
         while self.keep_playing:
             """Functions to start the game"""
             # Calls the functions, making the game start
-            self.output(self.init_card)
-            self.updates()
-
-    def get_input(self):
-        """Gets the inputs at the beginning of each round of play. In this case,
-        that means the Dealer will show a new card.
+            self.output()
 
 
-            #Evaluating if the score is zero or not
-            if self.score == 0:
-                #if the score is zero, it is game over and end of the game.
-                print("=============================================================================")
-                print("GAME OVER! \nThank you for you time playing this game. \nWe hope you have fun")
-                print("=============================================================================")
-                break
-            else:
-                #Else we will ask for the user if they wanted to play or not.
-                play = input("Keep Playing? [y/n]")
-                if "n" in play:
-                    print("Thank you for playing with us. Have a nice day!")
-                    break
-        
-    def updates(self, next_card):
+    def updates(self, respon):
+
         """Updates the important game information for each round of play. In 
         this case, that means updating the score.
         Args:
@@ -63,13 +43,12 @@ class Dealer:
         Return:
             final_score: return updated scores
         """
-        # calls the get_points function from Dealer_card class, and store  the points into a value called score
-        points = self.next_card.get_points(next_card, self.current_card)
-        final_score = self.score + points
-        
-        return final_score
 
-    def output(self, init_card):
+        # calls the get_points function, and store  the points into a value called score
+        points = self.next_card.get_points(self.init_card, respon)
+        self.score = points
+
+    def output(self):
         """Outputs the important game information for each round of play. In 
         this case, that means the card that were showed and the score.
         Args:
@@ -95,23 +74,18 @@ class Dealer:
         
         # Print the current card and the current score.
         #current_card = self.next_card.throw_card()
+        print(f"\nThe Dealer Throw: {self.init_card}")
         next_card = self.next_card.throw_card()
-        
-        #print(current_card)
+
         # ~ print(next_card)
-        print(f"\nThe Dealer Throw: {init_card}")
 
         if self.next_card.can_continue():
             # The user will choose, if the card will be higher or lower then the last card.
             choice = input("Will it be Heigher or Lower? [H/L] ").lower
-            self.next_card.player_response = choice
 
-        print(f"Next Card: {next_card}")
+            self.updates(choice)
+            print(f"Your current score is: {self.score}")
 
+            print(f"Next Card: {next_card}")
 
-        #printing of the current score
-        print(f"Your current score is: {self.score}")
-
-        #Getting the value of next_card to be used as a parameter
-        self.init_card = next_card
         self.init_card = next_card
