@@ -47,7 +47,6 @@ class Dealer_card:
         elif (self.player_response == "l" and next_card > current_card) or (self.player_response == "h" and next_card < current_card):
             points = -75
             
-        print(points)
         return points
 
     def throw_card(self):

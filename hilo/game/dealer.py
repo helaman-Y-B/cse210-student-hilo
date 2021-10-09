@@ -23,11 +23,20 @@ class Dealer:
         """
         self.init_card = self.next_card.throw_card()
         self.current_card = ""
+        self.final_score = 0
         while self.keep_playing:
             """Functions to start the game"""
             # Calls the functions, making the game start
             self.output(self.init_card)
-            self.updates(self.init_card)
+            #self.updates(self.init_card)
+            if self.score == 0:
+                print("GAME OVER")
+            play = input("do you want to play again? ")
+            if "n" in play:
+                break
+            
+
+                    
 
     def get_input(self):
         """Gets the inputs at the beginning of each round of play. In this case,
@@ -48,8 +57,13 @@ class Dealer:
         """
         # calls the get_points function, and store  the points into a value called score
         print(f"thisis the current card inside updates{self.current_card}")
+        print(f"thisis the current card inside updates{self.current_card}")
         points = self.next_card.get_points(next_card, self.current_card)
-        self.score += points
+        print(f" points eraned {points}")
+        print(f" current points {self.score}")
+        final_score = self.score + points
+        
+        return final_score
 
     def output(self, init_card):
         """Outputs the important game information for each round of play. In 
@@ -70,6 +84,7 @@ class Dealer:
             self.next_card.player_response = choice
 
         print(f"Next Card: {next_card}")
+        self.score = self.updates(next_card)
 
         print(f"Your current score is: {self.score}")
         self.init_card = next_card
