@@ -1,6 +1,5 @@
 import random
 
-
 class Dealer_card:
     """Dealer_card class is used to 'Throw' a card
         so that the game can start, continue and end the game."""

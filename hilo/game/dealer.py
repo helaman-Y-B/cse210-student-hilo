@@ -1,6 +1,5 @@
 from game.next_card import Dealer_card
 
-
 class Dealer:
     def __init__(self):
         """The class constructor.
